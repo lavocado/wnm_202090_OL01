@@ -4,8 +4,7 @@
 }
 
 body{
-	background-color: var(--color-offwhite);
-	padding-bottom: 4em;
+	background-color: var(--color-offwhite)
 }
 
 .favorite label{
@@ -17,7 +16,7 @@ body{
 
 .favorite input:checked + label{
 	color: red;
-	transform: scale(2, 2);
+	transform: scale(1.3, 1.3);
 }
 
 @media (max-width:800px) {

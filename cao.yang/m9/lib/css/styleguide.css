@@ -6,13 +6,17 @@
 }
 
 :root {
-	--color-neutral-light: #eee;
-	--color-neutral-medium: #999;
-	--color-neutral-dark: #555;
+	--color-neutral-light: #f3f3f3ff;
+	--color-neutral-medium: #999999ff;
+	--color-neutral-dark: #434343ff;
 
-	--color-main-light: #cbebf9;
-	--color-main-medium: #2592c3;
-	--color-main-dark: #052b3c;
+	--color-main-light: #c8d7edff;
+	--color-main-medium: #98b6e5ff;
+	--color-main-dark: #658fd0ff;
+
+	--color-sub-light: #fff2ccff;
+	--color-sub-medium: #ffe599ff;
+	--color-sub-dark: #fcc72dff;
 
 	--color-black: #000;
 	--color-white: #fff;
@@ -21,14 +25,14 @@
 	--spacing: 1rem;
 
 
-	--font-serif: Georgia, "Times New Roman", serif;
-	--font-sans: Helvetica, Arial, sans-serif;
+	--font-head: Ubuntu, Arial, sans-serif;
+	--font-body: Roboto, Arial, sans-serif;
 }
 
 body {
 	margin:0;
 	font-size: 100%;
-	font-family: var(--font-sans);
+	font-family: var(--font-body);
 }
 
 h1,
@@ -37,7 +41,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: var(--font-serif);
+	font-family: var(--font-head);
 }
 
 a {
@@ -84,7 +88,6 @@ a:hover {
 .hidden {
 	display: none;
 }
-
 /* component classes*/
 
 .nav ul {
@@ -99,13 +102,12 @@ a:hover {
 		padding: 0.2em 0.5em;
 	}
 	.nav a:hover {
-		background-color: var(--color-main-medium);
-		color: var(--color-white);
+		color: var(--color-sub-dark);
 		text-decoration: none;
 	}
 	.nav .active a {
-		background-color: var(--color-main-light);
-		color: inherit;
+		color: var(--color-neutral-medium);
+		text-decoration: none;
 	}
 
 .subtitle {
@@ -118,7 +120,10 @@ a:hover {
 .nav-stretch ul, 
 .nav-flex ul {
 	display: flex;
+}
 
+.nav-flex .active a{
+	text-decoration: underline;
 }
 
 .nav-material li, 
@@ -127,9 +132,18 @@ a:hover {
 	text-align: center;
 }
 
-.nav-pills a{
+.nav-pills a {
 	border-radius: 2em;
 	padding: 0.5em 1em;
+}
+
+.nav-pills a:hover { 
+	color: var(--color-sub-dark)
+}
+
+.nav-pills .active a { 
+	background-color: var(--color-sub-dark);
+	color: var(--color-white);
 }
 
 .nav-crumbs li:not(:first-child)::before {
@@ -158,8 +172,7 @@ a:hover {
 }
 
 .nav-material a:hover {
-	background-color: var(--color-neutral-light);
-	color: inherit;
+	color: var(--color-neutral-medium);
 }
 
 .nav-material a::after {
@@ -169,17 +182,17 @@ a:hover {
 	left: 0;
 	width: 100%;
 	height: 0;
-	background-color: var(--color-main-medium);
+	background-color: var(--color-sub-medium);
 	transition: all 0.3s;
 }
 
 .nav-material .active a::after {
-	height: 4px;
+	height: 2px;
 }
 
 .navbar {
-	background-color: var(--color-neutral-dark);
-	color: var(--color-white);
+	background-color: var(--color-neutral-light);
+	color: var(--color-neutral-dark);
 	line-height: var(--header-height);
 }
 
@@ -206,22 +219,38 @@ a:hover {
 }
 
 	.card.soft {
-		border-radius: 0.5em;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		border-radius: 0.7em;
+		box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+	}
+
+	.card.inset {
+		border-radius: 0.7em;
+		box-shadow: 0 0 3px 5px inset rgba(0, 0, 0, 0.06);
 	}
 
 	.card.hard {
-		border-radius: 0.2em;
-		border: 2px solid var(--color-neutral-medium);
+		border-radius: 0.7em;
+		border: 2px solid var(--color-sub-medium);
+	}
+
+	.card.harder {
+		border-radius: 0.3em;
+		border: 2px solid var(--color-sub-dark);
 	}
 
 	.card.dark {
-		background-color: var(--color-neutral-dark);
+		background-color: var(--color-main-dark);
 		color: var(--color-neutral-light)
 	}
 
 	.card.medium {
-		background-color: var(--color-neutral-medium);
+		background-color: var(--color-main-medium);
+	}
+
+	.card.light {
+		background-color: var(--color-main-light);
+		border-radius: 0.7em;
+		box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 	}
 
 	.card.flat {
@@ -229,7 +258,7 @@ a:hover {
 	}
 
 .view-window {
-	height: 100vh;
+	height: 50vh;
 	position: relative;
 	overflow: hidden;
 	background-size: cover;
@@ -237,12 +266,13 @@ a:hover {
 	background-attachment: fixed;
 }
 
-
 /*Tables*/
+
 .table {
 	width: 100%;
 	border-collapse: collapse;
 }
+
 .table th,
 .table td {
 	text-align: left;
@@ -322,7 +352,7 @@ a:hover {
 
 .form-button {
 	background-color: var(--color-neutral-light);
-	border-radius: 0.2em;
+	border-radius: 0.4em;
 	cursor: pointer;
 	text-align: center;
 	padding: 0.5em 1em;
@@ -333,7 +363,7 @@ a:hover {
 }
 
 .form-button:hover {
-	text-decoration: none;
+	color: var(--color-neutral-medium);
 }
 
 .hotdog {
@@ -344,13 +374,12 @@ a:hover {
 }
 
 .hotdog.dark {
-	background-color: var(--color-neutral-dark);
-	color: var(--color-neutral-light);
+	background-color: var(--color-main-dark);
+	color: var(--color-white);
 }
 
-.hotdog.light {
-	background-color: var(--color-white);
-	color: var(--color-black);
+.hotdog.dark::placeholder {
+	color: var(--color-white);
 }
 
 .form-select>select {
@@ -364,19 +393,6 @@ a:hover {
 	position: relative;
 }
 
-/*.form-select::after {
-	content: "▾"; 
-	font-family: arial, sans-serif;
-	font-size: 1.2em;
-	position: absolute;
-	top: 50%;
-	right: 0.2em; 
-	transform: translateY(-50%);
-	pointer-events: none;
-	color: var(--color-neutral-medium);
-}
-*/
-
 
 /*toggle*/
 .toggle label {
@@ -384,8 +400,8 @@ a:hover {
 	display: inline-block;
 	width: 2em; 
 	height: 1em; 
-	border: 0.1em solid var(--color-main-medium);
-	background-color: var(--color-neutral-light);
+	border: 0.1em solid var(--color-main-light);
+	background-color: var(--color-main-light);
 	border-radius: 1em;
 	position: relative;
 }
@@ -397,13 +413,27 @@ a:hover {
 	height: 0.8em; 
 	border-radius: 1em;
 	position: absolute;
-	background-color: var(--color-main-medium);
+	background-color: var(--color-white);
 	transition: all 0.3s;
 }
 
 .toggle input:checked + label::after {
 	transform: translateX(1em);
 }
+
+.toggle input:checked + label {
+	border: 0.1em solid var(--color-main-dark);
+	background-color: var(--color-main-dark);
+}
+
+
+
+
+
+
+
+
+
 
 
 
